@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Nerd Font icons + labels
+options=" logout
+ reboot
+ shutdown"
+
+# Show menu
+choice=$(echo -e "$options" | rofi -dmenu -i -p '' \
+    -location 3 \
+    -xoffset 0 \
+    -yoffset -10 \
+    -theme-str 'window { width: 15%; height: 20%; }')
+
+# Handle choice
+case "$choice" in
+    " logout")
+        i3-msg exit
+        ;;
+    " reboot")
+        systemctl reboot
+        ;;
+    " shutdown")
+        systemctl poweroff
+        ;;
+esac
+

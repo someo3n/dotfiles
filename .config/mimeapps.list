@@ -1,0 +1,4 @@
+
+[Default Applications]
+x-scheme-handler/terminal=kitty.desktop
+inode/directory=yazi.desktop

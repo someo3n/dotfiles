@@ -1,0 +1,34 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "display": {
+    "separator": " ",
+    "size": {
+      "binaryPrefix": "jedec"
+    }
+  },
+  "modules": [
+    "title",
+    {
+    	"type": "os",
+    	"key": "os"
+    },
+    {
+      "type": "packages",
+      "key": "pkg",
+      "format": "{1}"
+    },
+    {
+      "type": "memory",
+      "key": "mem",
+      "format": "{1}/{2} {3}"
+    },
+    {
+      "type": "disk",
+      "key": "{1}",
+      "format": "{1}/{2} {3}"
+    }
+  ],
+  "logo": {
+    "type": "small"
+  }
+}
