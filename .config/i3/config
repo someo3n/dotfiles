@@ -38,6 +38,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg e
 bindsym $mod+$mod2+p exec --no-startup-id $HOME/d/src/picomtoggle/pt.sh
 
 # Launchers
+bindsym $mod+Shift+m exec --no-startup-id kitty -e pulsemixer
 bindsym $mod+x       exec --no-startup-id xkill
 bindsym $mod+Return  exec --no-startup-id kitty 
 bindsym $mod+$mod2+b exec --no-startup-id librewolf
@@ -45,9 +46,10 @@ bindsym $mod+F1      exec --no-startup-id flameshot gui
 bindsym $mod+b       exec --no-startup-id "boomer -c ~/.config/boomer/config"
 
 # Rofi
-bindsym $mod+.   exec --no-startup-id rofimoji
-bindsym $mod     exec --no-startup-id "rofi -modi drun,run -show drun"
-bindcode $mod+40 exec --no-startup-id "rofi -modi drun,run -show drun"
+bindsym $mod+period  exec --no-startup-id rofimoji
+bindsym $mod+Shift+s exec --no-startup-id searchmenu
+bindsym $mod+Shift+p exec --no-startup-id powermenu
+bindcode $mod+40     exec --no-startup-id "rofi -modi drun,run -show drun"
 
 # Window management
 floating_modifier $mod
@@ -121,7 +123,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Appearance
-font pango:UbuntuSansMono Nerd Font Mono 12
+font pango:UbuntuMono Nerd Font Mono 12
 
 client.focused          #2A7F87     #2A7F87     #ffffff  #2A7F87       #2A7F87
 client.focused_inactive #25696F     #25696F     #ffffff  #25696F       #25696F
