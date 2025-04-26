@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# Define repo URL
+REPO_URL="https://github.com/someo3n/dotfiles.git"
+REPO_DIR="dotfiles"
+
+# Clone the repository
+echo "Cloning the repository..."
+git clone "$REPO_URL" "$REPO_DIR"
+
+# Change into the repo directory
+cd "$REPO_DIR" || exit 1
+
+# Copy all files except .git, setup.sh, and install.sh into the home directory
+for file in *; do
+  if [ "$file" != ".git" ] && [ "$file" != "install.sh" ]; then
+    cp -r "$file" ~/
+  fi
+done
+
+# Run the setup script
+sh ~/setup.sh
+
+# Delete the setup.sh script after execution
+rm ~/setup.sh
+
+# Cleanup: Delete the cloned repo directory
+cd ~
+rm -rf "$REPO_DIR"

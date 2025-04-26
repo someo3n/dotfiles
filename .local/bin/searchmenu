@@ -1,0 +1,13 @@
+#!/usr/bin/sh
+
+# Prompt the user for a search query
+query=$(rofi -dmenu -p "search" -theme-str 'window { width: 30%; height: 7%; }')
+
+# If the user entered something, open it
+if [[ -n "$query" ]]; then
+    # Replace spaces with '+'
+    search_query=$(echo "$query" | sed 's/ /+/g')
+    # Open in default browser
+    xdg-open "https://duckduckgo.com/?q=${search_query}"
+fi
+
