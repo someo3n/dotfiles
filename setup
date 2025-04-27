@@ -1,12 +1,11 @@
 #!/bin/sh
 
-sudo pacman -S --noconfirm --needed networkmanager polkit zoxid zoxide htop neovim tmux lf lsd man-db inetutils whois wget netcat python3 uv python3-requests python3-pygame npm nodejs go pipewire pipewire-pulse pipewire-alsa pipewire-pulse pipewire-jack wireplumber pulsemixer xorg-server xorg-apps xorg-xinit xf86-input-libinput xf86-video-intel xorg-xrandr xorg-xset xdotool hsetroot feh i3-wm dunst polybar rofi ttf-ubuntu-mono-nerd noto-fonts-emoji noto-fonts-cjk flameshot mpv thunar papirus-icon-theme arc-theme lxappearance lxqt-policykit libnotify
+sudo pacman -Syu --noconfirm --needed base-devel git networkmanager polkit zoxid zoxide htop neovim tmux lf lsd man-db inetutils whois wget netcat python3 uv python3-requests python3-pygame npm nodejs go pipewire pipewire-pulse pipewire-alsa pipewire-pulse pipewire-jack wireplumber pulsemixer xorg-server xorg-apps xorg-xinit xf86-input-libinput xf86-video-intel xorg-xrandr xorg-xset xdotool hsetroot feh i3-wm dunst polybar rofi ttf-ubuntu-mono-nerd noto-fonts-emoji noto-fonts-cjk flameshot mpv thunar papirus-icon-theme arc-theme lxappearance lxqt-policykit libnotify
 
 # Install yay if it has not already been installed
 CUR_DIR=$(pwd)
 
 if ! command -v yay >/dev/null 2>&1; then
-    sudo pacman -Sy --needed --noconfirm base-devel git
     git clone https://aur.archlinux.org/yay.git "$HOME/_temp"
     cd "$HOME/_temp" || exit 1
     makepkg -si --noconfirm
