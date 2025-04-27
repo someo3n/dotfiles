@@ -1,0 +1,54 @@
+#!/usr/bin/zsh
+
+# List of battery percentages to warn about
+levels=(20 15 10 9 8 7 6 5 4 3 2 1)
+
+# Keep track of already alerted levels
+typeset -A alerted
+
+# Path to battery info
+battery_path="/sys/class/power_supply/BAT0/capacity"
+status_path="/sys/class/power_supply/BAT0/status"
+
+# Notification function
+send_notification() {
+    local level=$1
+    local critical=$2
+    local icon urgency
+
+    if (( critical )); then
+        icon="battery-caution"
+        urgency="critical"
+    else
+        icon="battery-low"
+        urgency="normal"
+    fi
+
+    notify-send -u "$urgency" -i "$icon" "Battery Warning" "Battery at ${level}%."
+}
+
+while true; do
+    if [[ -f "$battery_path" ]]; then
+        battery_level=$(<"$battery_path")
+        battery_status=$(<"$status_path")
+
+        # Only warn if discharging
+        if [[ "$battery_status" == "Discharging" ]]; then
+            for lvl in "${levels[@]}"; do
+                if (( battery_level == lvl )) && [[ -z "${alerted[$lvl]}" ]]; then
+                    if (( lvl <= 6 )); then
+                        send_notification "$lvl" 1
+                    else
+                        send_notification "$lvl" 0
+                    fi
+                    alerted[$lvl]=1
+                fi
+            done
+        fi
+    else
+        echo "Battery info not found at $battery_path"
+        exit 1
+    fi
+    sleep 30
+done
+

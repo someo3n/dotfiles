@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Kill any running Polybar instances
+pkill polybar
+
+# Check if IS_LAPTOP is set
+if [ -n "$IS_LAPTOP" ]; then
+    polybar example
+else
+    # Run Polybar with the 'desktop' config if IS_LAPTOP is not set
+    polybar desktop
+fi
