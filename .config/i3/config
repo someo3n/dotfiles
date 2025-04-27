@@ -11,8 +11,8 @@ exec --no-startup-id export GTK_ICON_THEME=Papirus-Dark
 exec --no-startup-id export XCURSOR_THEME=Bibata-Modern-Ice
 
 # Autostart
-exec_always --no-startup-id killall -q polybar ; polybar example
-exec_always --no-startup-id killall -q dunst   ; dunst
+exec_always --no-startup-id launchpbar 
+exec_always --no-startup-id killall -q dunst ; dunst
 exec_always --no-startup-id hsetroot -solid '#1e1e2e'
 
 exec --no-startup-id lxqt-policykit-agent
@@ -35,7 +35,7 @@ bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
-bindsym $mod+$mod2+p exec --no-startup-id $HOME/d/src/picomtoggle/pt.sh
+bindsym $mod+$mod2+a exec --no-startup-id launchpbar
 
 # Launchers
 bindsym $mod+Shift+m exec --no-startup-id kitty -e pulsemixer
